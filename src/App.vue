@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeMount } from 'vue'
 import { useColorModes } from '@coreui/vue'
-
+import './assets/tailwind.css';
 import { useThemeStore } from '@/stores/theme.js'
 
 const { isColorModeSet, setColorMode } = useColorModes(

@@ -14,18 +14,6 @@ export default [
     name: 'Theme',
   },
   {
-    component: 'CNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop',
-  },
-  {
-    component: 'CNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
-  },
-  {
     component: 'CNavTitle',
     name: 'Components',
   },
@@ -111,6 +99,18 @@ export default [
         to: '/base/tooltips',
       },
     ],
+  },
+  {
+    component: 'CNavItem',
+    name: 'New Page',
+    to: '/pages/new-page',
+    icon: 'cil-star',
+  },
+  {
+    component: 'CNavItem',
+    name: 'New Page 2',
+    to: '/pages/new-page-2',
+    icon: 'cil-star',
   },
   {
     component: 'CNavGroup',

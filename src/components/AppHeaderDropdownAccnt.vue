@@ -49,8 +49,24 @@ const itemsCount = 42
         <CBadge color="primary" class="ms-auto">{{ itemsCount }}</CBadge>
       </CDropdownItem>
       <CDropdownDivider />
-      <CDropdownItem> <CIcon icon="cil-shield-alt" /> Lock Account </CDropdownItem>
-      <CDropdownItem> <CIcon icon="cil-lock-locked" /> Logout </CDropdownItem>
+      <CDropdownItem @click="handleLogout"> <CIcon icon="cil-lock-locked" /> Logout </CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      avatar: 'path/to/avatar.jpg', // Replace with actual avatar path
+      itemsCount: 5, // Example count, replace with actual data
+    }
+  },
+  methods: {
+    handleLogout() {
+      localStorage.removeItem('authenticated')
+      this.$router.push('/pages/login')
+    },
+  },
+}
+</script>

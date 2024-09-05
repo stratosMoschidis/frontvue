@@ -9,6 +9,9 @@ import CIcon from '@coreui/icons-vue'
 import { iconsSet as icons } from '@/assets/icons'
 import DocsExample from '@/components/DocsExample'
 
+// Import Font Awesome
+import '@fortawesome/fontawesome-free/css/all.css'
+
 const app = createApp(App)
 app.use(createPinia())
 app.use(router)
