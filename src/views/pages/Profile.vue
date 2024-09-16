@@ -118,13 +118,14 @@
 import { CContainer, CRow, CCol, CCard, CCardBody, CCardTitle, CCardText, CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem, CNavGroup, CSidebarFooter, CSidebarToggler, CButton } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
 import { useRouter } from 'vue-router';
+import { useAuth } from '@/store/auth'
 import { cilUser, cilMediaPlay, cilHistory, cilFolder, cilAccountLogout, cilStorage, cilDataTransferDown, cilSettings, cilChart, cilEco } from '@coreui/icons'
 
 const router = useRouter();
+const { logout: authLogout } = useAuth();
 
-const logout = () => {
-  // Perform logout logic here (e.g., clear user session, tokens, etc.)
-  // Redirect to login page
+const handleLogout = () => {
+  authLogout() // Clear authentication state
   router.push({ name: 'Login' });
 };
 

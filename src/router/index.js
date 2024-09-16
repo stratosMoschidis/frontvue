@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useAuth } from '@/store/auth';
 
 import DefaultLayout from '@/layouts/DefaultLayout';
 import Login from '../views/pages/Login.vue'; // Importing Login.vue
@@ -75,5 +76,14 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL || '/'),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated } = useAuth()
+  if (to.name !== 'Login' && !isAuthenticated.value) {
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
+})
 
 export default router;

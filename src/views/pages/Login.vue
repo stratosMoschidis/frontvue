@@ -112,14 +112,17 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuth } from '@/store/auth'
 import { CCard, CCardBody, CCardTitle, CCardText, CListGroup, CListGroupItem, CAccordion, CAccordionItem, CAccordionHeader, CAccordionBody } from '@coreui/vue'
 
 const router = useRouter()
 const username = ref('')
 const password = ref('')
+const { login } = useAuth()
 
 const handleLogin = async () => {
   if (username.value === 'admin' && password.value === 'admin') {
+    login() // Set authentication state
     try {
       await router.push('/profile')
     } catch (error) {
