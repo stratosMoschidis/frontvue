@@ -16,13 +16,13 @@
                 <h4 class="text-center">Welcome Back!</h4>
                 <CInputGroup class="mb-3">
                   <CInputGroupText>
-                    <CIcon icon="cil-user" />
+                    <font-awesome-icon icon="user" />
                   </CInputGroupText>
                   <CFormInput v-model="username" placeholder="Username" />
                 </CInputGroup>
                 <CInputGroup class="mb-4">
                   <CInputGroupText>
-                    <CIcon icon="cil-lock-locked" />
+                    <font-awesome-icon icon="lock" />
                   </CInputGroupText>
                   <CFormInput v-model="password" type="password" placeholder="Password" />
                 </CInputGroup>
@@ -34,7 +34,9 @@
         <CCol :lg="2">
           <CCard class="h-100 custom-card">
             <CCardBody>
-              <CCardTitle class="mb-3">List of Top Models</CCardTitle>
+              <CCardTitle class="mb-3">
+                <font-awesome-icon icon="chart-bar" class="me-2" /> List of Top Models
+              </CCardTitle>
               <CListGroup flush>
                 <CListGroupItem>Model A - 95% accuracy</CListGroupItem>
                 <CListGroupItem>Model B - 93% accuracy</CListGroupItem>
@@ -48,7 +50,9 @@
         <CCol :lg="2">
           <CCard class="h-100 custom-card">
             <CCardBody>
-              <CCardTitle class="mb-3">List of Top Dataset</CCardTitle>
+              <CCardTitle class="mb-3">
+                <font-awesome-icon icon="database" class="me-2" /> List of Top Dataset
+              </CCardTitle>
               <CListGroup flush>
                 <CListGroupItem>Dataset A - 10,000 samples</CListGroupItem>
                 <CListGroupItem>Dataset B - 8,500 samples</CListGroupItem>
@@ -62,7 +66,9 @@
         <CCol :lg="2">
           <CCard class="h-100 custom-card">
             <CCardBody>
-              <CCardTitle class="mb-3">Energy News</CCardTitle>
+              <CCardTitle class="mb-3">
+                <font-awesome-icon icon="lightbulb" class="me-2" /> Energy News
+              </CCardTitle>
               <CAccordion flush>
                 <CAccordionItem :item-key="1">
                   <CAccordionHeader>Renewable Energy Breakthrough</CAccordionHeader>
@@ -89,7 +95,9 @@
         <CCol :lg="2">
           <CCard class="h-100 custom-card raido-card">
             <CCardBody>
-              <CCardTitle class="mb-3">@Web RAIDO horizon program</CCardTitle>
+              <CCardTitle class="mb-3">
+                <font-awesome-icon icon="globe" class="me-2" /> @Web RAIDO horizon program
+              </CCardTitle>
               <CCardText>
                 The @Web RAIDO horizon program is an innovative initiative aimed at revolutionizing energy management and optimization. It leverages cutting-edge web technologies and AI to provide efficient, sustainable solutions for the energy sector.
               </CCardText>
@@ -113,7 +121,7 @@ const password = ref('')
 const handleLogin = async () => {
   if (username.value === 'admin' && password.value === 'admin') {
     try {
-      await router.push('/profile')  // Αλλαγή από '/dashboard' σε '/profile'
+      await router.push('/profile')
     } catch (error) {
       console.error('Navigation error:', error)
     }
@@ -154,7 +162,7 @@ const handleLogin = async () => {
 }
 
 .custom-card .card-title {
-  color: #321fdb;  /* Το ίδιο χρώμα με το κουμπί login (primary color του CoreUI) */
+  color: #321fdb;
   font-weight: bold;
 }
 
@@ -177,7 +185,7 @@ const handleLogin = async () => {
 }
 
 .raido-card {
-  background-color: #321fdb; /* Το χρώμα του κουμπιού login */
+  background-color: #321fdb;
   color: white;
 }
 

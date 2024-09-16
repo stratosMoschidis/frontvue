@@ -10,7 +10,7 @@ import { iconsSet as icons } from '@/assets/icons'
 import DocsExample from '@/components/DocsExample'
 
 // Import Font Awesome
-import '@fortawesome/fontawesome-free/css/all.css'
+import { FontAwesomeIcon } from './plugins/font-awesome'
 
 const app = createApp(App)
 app.use(createPinia())
@@ -19,5 +19,5 @@ app.use(CoreuiVue)
 app.provide('icons', icons)
 app.component('CIcon', CIcon)
 app.component('DocsExample', DocsExample)
-
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

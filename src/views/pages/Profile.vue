@@ -6,89 +6,104 @@
     </video>
     <CContainer fluid>
       <CRow>
-        <CCol :lg="4" class="bg-dark"> <!-- Sidebar takes 1/3 of the width -->
-          <CSidebar colorScheme="dark" class="custom-sidebar">
-            <CSidebarHeader class="border-b">
+        <CCol :lg="2" class="bg-dark"> <!-- Sidebar takes 1/6 of the width -->
+          <CSidebar colorScheme="dark">
+            <CSidebarHeader class="border-bottom">
               <CSidebarBrand>
                 <img src="/logo.png" alt="Logo" class="sidebar-logo" />
               </CSidebarBrand>
             </CSidebarHeader>
             <CSidebarNav>
-              <CNavTitle class="text-white">Profile Menu</CNavTitle>
-              <CNavItem href="#" :active="true" class="nav-item flex items-center text-white">
-                <CIcon customClassName="nav-icon text-white" icon="fas fa-user" /> 
-                <span class="ml-2">Personal Info</span>
+              <CNavTitle>Profile Menu</CNavTitle>
+              <CNavItem href="#" @click="navigateToNewTask">
+                <CIcon customClassName="nav-icon" icon="cil-media-play" /> Start a New Optimization Task
               </CNavItem>
-              <CNavItem href="#" class="nav-item flex items-center text-white">
-                <CIcon customClassName="nav-icon text-white" icon="fas fa-play" />
-                <span class="ml-2">Start a New<br />Optimization Task</span>
+              <CNavItem href="#">
+                <CIcon customClassName="nav-icon" icon="cil-history" /> Previous Tasks
               </CNavItem>
-              <CNavItem href="#" class="nav-item flex items-center text-white">
-                <CIcon customClassName="nav-icon text-white" icon="fas fa-history" /> 
-                <span class="ml-2">Previous Tasks</span>
-              </CNavItem>
-              <CNavItem href="#" class="nav-item flex items-center text-white">
-                <CIcon customClassName="nav-icon text-white" icon="fas fa-folder" /> 
-                <span class="ml-2">Personal Model Repo</span>
-              </CNavItem>
-              <CNavItem href="#" class="nav-item flex items-center text-white">
-                <CIcon customClassName="nav-icon text-white" icon="fas fa-database" /> 
-                <span class="ml-2">Personal Dataset Repo</span>
-              </CNavItem>
-              <CNavItem class="nav-item flex items-center text-white mt-auto">
-                <CButton @click="logout" color="danger" size="sm" class="w-full py-1">
-                  <CIcon customClassName="nav-icon text-white" icon="fas fa-sign-out-alt" /> 
-                  <span class="ml-2">Logout</span>
-                </CButton>
+              <CNavGroup>
+                <template #togglerContent>
+                  <CIcon customClassName="nav-icon" icon="cil-folder" /> Repositories
+                </template>
+                <CNavItem href="#" @click="navigateToPersonalModelRepo">
+                  <CIcon customClassName="nav-icon" icon="cil-storage" /> Personal Model Repo
+                </CNavItem>
+                <CNavItem href="#" @click="navigateToPersonalDatasetRepo">
+                  <CIcon customClassName="nav-icon" icon="cil-data-transfer-down" /> Personal Dataset Repo
+                </CNavItem>
+              </CNavGroup>
+              <CNavItem href="#" @click="logout">
+                <CIcon customClassName="nav-icon" icon="cil-account-logout" /> Logout
               </CNavItem>
             </CSidebarNav>
-            <CSidebarFooter class="border-t">
+            <CSidebarFooter class="border-top">
               <CSidebarToggler />
             </CSidebarFooter>
           </CSidebar>
         </CCol>
-        <CCol :lg="8"> <!-- Remaining space for cards -->
-          <CRow>
-            <CCol md="4"> <!-- Set to 4 for equal width columns -->
-              <CCard class="mb-4 bg-dark text-white">
-                <CCardBody>
-                  <CCardTitle>Personal Information</CCardTitle>
-                  <CCardText>
-                    Name: John Doe<br />
-                    Email: john.doe@example.com
+        <CCol :lg="10"> <!-- Main content area -->
+          <CRow class="justify-content-center">
+            <CCol md="6" lg="6" xl="3" class="mb-4"> <!-- Personal Information -->
+              <CCard class="h-100 bg-dark text-white shadow-lg">
+                <CCardBody class="d-flex flex-column">
+                  <CCardTitle class="mb-4">
+                    <CIcon icon="cil-user" size="xl" class="me-2" /> Personal Information
+                  </CCardTitle>
+                  <CCardText class="flex-grow-1">
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> john.doe@example.com</p>
+                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    <p><strong>Address:</strong> 123 Main St, Anytown, USA</p>
                   </CCardText>
+                  <CButton color="primary" class="mt-3">Edit Profile</CButton>
                 </CCardBody>
               </CCard>
             </CCol>
-            <CCol md="4"> <!-- Set to 4 for equal width columns -->
-              <CCard class="mb-4 bg-dark text-white">
-                <CCardBody>
-                  <CCardTitle>Account Settings</CCardTitle>
-                  <CCardText>
-                    Change Password<br />
-                    Update Email
+            <CCol md="6" lg="6" xl="3" class="mb-4"> <!-- Account Settings -->
+              <CCard class="h-100 bg-dark text-white shadow-lg">
+                <CCardBody class="d-flex flex-column">
+                  <CCardTitle class="mb-4">
+                    <CIcon icon="cil-settings" size="xl" class="me-2" /> Account Settings
+                  </CCardTitle>
+                  <CCardText class="flex-grow-1">
+                    <p><strong>Password:</strong> Last changed 30 days ago</p>
+                    <p><strong>Two-Factor Auth:</strong> Enabled</p>
+                    <p><strong>Notifications:</strong> Email, SMS</p>
+                    <p><strong>Language:</strong> English (US)</p>
                   </CCardText>
+                  <CButton color="warning" class="mt-3">Manage Settings</CButton>
                 </CCardBody>
               </CCard>
             </CCol>
-            <CCol md="4"> <!-- Set to 4 for equal width columns -->
-              <CCard class="mb-4 bg-dark text-white">
-                <CCardBody>
-                  <CCardTitle>Analytics</CCardTitle>
-                  <CCardText>
-                    Last Login: 2023-10-01<br />
-                    Activity: Active
+            <CCol md="6" lg="6" xl="3" class="mb-4"> <!-- Analytics -->
+              <CCard class="h-100 bg-dark text-white shadow-lg">
+                <CCardBody class="d-flex flex-column">
+                  <CCardTitle class="mb-4">
+                    <CIcon icon="cil-chart" size="xl" class="me-2" /> Analytics
+                  </CCardTitle>
+                  <CCardText class="flex-grow-1">
+                    <p><strong>Last Login:</strong> 2023-10-01 14:30 UTC</p>
+                    <p><strong>Activity Status:</strong> Active</p>
+                    <p><strong>Tasks Completed:</strong> 15 this month</p>
+                    <p><strong>Avg. Task Duration:</strong> 2.5 hours</p>
                   </CCardText>
+                  <CButton color="info" class="mt-3">View Full Report</CButton>
                 </CCardBody>
               </CCard>
             </CCol>
-            <CCol md="4"> <!-- Set to 4 for equal width columns -->
-              <CCard class="mb-4 bg-dark text-white">
-                <CCardBody>
-                  <CCardTitle>Overall Green Index</CCardTitle>
-                  <CCardText>
-                    Your current score: 85/100
+            <CCol md="6" lg="6" xl="3" class="mb-4"> <!-- Overall Green Index -->
+              <CCard class="h-100 bg-dark text-white shadow-lg">
+                <CCardBody class="d-flex flex-column">
+                  <CCardTitle class="mb-4">
+                    <CIcon icon="cil-eco" size="xl" class="me-2" /> Overall Green Index
+                  </CCardTitle>
+                  <CCardText class="flex-grow-1">
+                    <p><strong>Current Score:</strong> 85/100</p>
+                    <p><strong>Improvement:</strong> +5 points this month</p>
+                    <p><strong>CO2 Saved:</strong> 500 kg</p>
+                    <p><strong>Energy Efficiency:</strong> 92%</p>
                   </CCardText>
+                  <CButton color="success" class="mt-3">Improve Score</CButton>
                 </CCardBody>
               </CCard>
             </CCol>
@@ -100,17 +115,29 @@
 </template>
 
 <script setup>
-import { CContainer, CRow, CCol, CCard, CCardBody, CCardTitle, CCardText, CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem, CSidebarFooter, CSidebarToggler, CButton } from '@coreui/vue'
+import { CContainer, CRow, CCol, CCard, CCardBody, CCardTitle, CCardText, CSidebar, CSidebarHeader, CSidebarBrand, CSidebarNav, CNavTitle, CNavItem, CNavGroup, CSidebarFooter, CSidebarToggler, CButton } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { useRouter } from 'vue-router'; // Import useRouter for navigation
-import '@fortawesome/fontawesome-free/css/all.css' // Import Font Awesome CSS
+import { useRouter } from 'vue-router';
+import { cilUser, cilMediaPlay, cilHistory, cilFolder, cilAccountLogout, cilStorage, cilDataTransferDown, cilSettings, cilChart, cilEco } from '@coreui/icons'
 
-const router = useRouter(); // Initialize router
+const router = useRouter();
 
 const logout = () => {
   // Perform logout logic here (e.g., clear user session, tokens, etc.)
   // Redirect to login page
-  router.push({ name: 'Login' }); // Adjust the route name as necessary
+  router.push({ name: 'Login' });
+};
+
+const navigateToNewTask = () => {
+  router.push({ name: 'NewTask' });
+};
+
+const navigateToPersonalModelRepo = () => {
+  router.push({ name: 'PersonalModelRepo' });
+};
+
+const navigateToPersonalDatasetRepo = () => {
+  router.push({ name: 'PersonalDatasetRepo' });
 };
 </script>
 
@@ -123,18 +150,12 @@ const logout = () => {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.7; /* Increased transparency */
+  opacity: 0.7;
 }
 
 .sidebar-logo {
   max-width: 100%;
   height: auto;
-  max-height: 50px; /* Logo height adjustment */
-}
-
-.custom-sidebar .nav-item {
-  white-space: normal; /* Allow text to wrap */
-  overflow: visible; /* Show overflow text */
-  text-overflow: clip; /* Clip overflow text */
+  max-height: 50px;
 }
 </style>

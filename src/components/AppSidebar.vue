@@ -19,17 +19,48 @@ const sidebar = useSidebarStore()
     @visible-change="(value) => sidebar.toggleVisible(value)"
   >
     <CSidebarHeader class="border-bottom">
-      <RouterLink custom to="/" v-slot="{ href, navigate }">
-        <CSidebarBrand v-bind="$attrs" as="a" :href="href" @click="navigate">
-          <CIcon custom-class-name="sidebar-brand-full" :icon="logo" :height="32" />
-          <CIcon custom-class-name="sidebar-brand-narrow" :icon="sygnet" :height="32" />
-        </CSidebarBrand>
-      </RouterLink>
-      <CCloseButton class="d-lg-none" dark @click="sidebar.toggleVisible()" />
+      <CSidebarBrand>CoreUI</CSidebarBrand>
     </CSidebarHeader>
-    <AppSidebarNav />
-    <CSidebarFooter class="border-top d-none d-lg-flex">
-      <CSidebarToggler @click="sidebar.toggleUnfoldable()" />
+    <CSidebarNav>
+      <CNavTitle>Nav Title</CNavTitle>
+      <CNavItem href="#">
+        <CIcon customClassName="nav-icon" icon="cil-speedometer" /> Nav item
+      </CNavItem>
+      <CNavItem href="#">
+        <CIcon customClassName="nav-icon" icon="cil-speedometer" /> With badge
+        <CBadge class="ms-auto" color="primary">NEW</CBadge>
+      </CNavItem>
+      <CNavGroup>
+        <template #togglerContent>
+          <CIcon customClassName="nav-icon" icon="cil-puzzle" /> Nav dropdown
+        </template>
+        <CNavItem href="#">
+          <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
+        </CNavItem>
+        <CNavItem href="#">
+          <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
+        </CNavItem>
+      </CNavGroup>
+      <CNavGroup>
+        <template #togglerContent>
+          <CIcon customClassName="nav-icon" icon="cil-puzzle" /> Nav dropdown2
+        </template>
+        <CNavItem href="#">
+          <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
+        </CNavItem>
+        <CNavItem href="#">
+          <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
+        </CNavItem>
+      </CNavGroup>
+      <CNavItem href="https://coreui.io">
+        <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
+      </CNavItem>
+      <CNavItem href="https://coreui.io/pro/">
+        <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
+      </CNavItem>
+    </CSidebarNav>
+    <CSidebarFooter class="border-top">
+      <CSidebarToggler />
     </CSidebarFooter>
   </CSidebar>
 </template>
